@@ -1,1 +1,4 @@
-
+datasource db {
+  provider = "postgresql" // Render
+  url      = env("DATABASE_URL")
+}
