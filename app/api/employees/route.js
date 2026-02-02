@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";  // <<< MUST BE HERE
 
 const prisma = new PrismaClient();
 
