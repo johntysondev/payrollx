@@ -1,4 +1,24 @@
 datasource db {
-  provider = "postgresql" // Render
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Employee {
+  id        Int        @id @default(autoincrement())
+  name      String
+  hourly    Float
+  timeLogs  TimeEntry[]
+}
+
+model TimeEntry {
+  id         Int      @id @default(autoincrement())
+  employeeId Int
+  hours      Float
+  createdAt  DateTime @default(now())
+
+  employee Employee @relation(fields: [employeeId], references: [id])
 }
