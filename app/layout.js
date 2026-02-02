@@ -1,3 +1,5 @@
+import "./globals.css"; // <- MUST import here for Tailwind to work
+
 export const metadata = {
   title: "PayrollX",
   description: "Modern web-based payroll system"
@@ -6,7 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-neutral-900 text-white">
         {children}
       </body>
     </html>
