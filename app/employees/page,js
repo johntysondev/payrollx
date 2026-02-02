@@ -1,1 +1,32 @@
+"use client";
 
+import { useEffect, useState } from "react";
+
+export default function EmployeesPage() {
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/employees")
+      .then(res => res.json())
+      .then(setEmployees);
+  }, []);
+
+  return (
+    <div className="p-10">
+      <h1 className="text-3xl font-bold mb-6">Employees</h1>
+
+      {employees.length === 0 && (
+        <p className="text-gray-400">No employees yet.</p>
+      )}
+
+      <div className="space-y-4">
+        {employees.map(emp => (
+          <div key={emp.id} className="card flex justify-between">
+            <span>{emp.name}</span>
+            <span className="text-gray-400">${emp.hourly}/hr</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
